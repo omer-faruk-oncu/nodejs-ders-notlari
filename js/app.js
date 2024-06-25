@@ -75,5 +75,73 @@ console.log(hacimHesap(3,4,5,alan) )
 
 let str = ' 1234567890.abcXYZ.1234567890 '
 console.log(str.match('123'))
+console.log(str.slice(-10,-8))
+console.log(str.substring(5,10))
+console.log(str.padStart(35,'-'))
+
+console.log(123.789.toPrecision(3))
+console.log(123.789.toPrecision(9))
+
+let intLocal = 123456.789
+
+console.log(intLocal.toLocaleString('tr-tr', {style:"currency", currency:"TRY"}))
+
+let arr = ['zero', 'one','two','three','four','five']
+let [zero, one, two, ...partArr] = arr 
+console.log(partArr)
+
+let newArr = [...arr, 'six', 'seven']
+console.log(newArr)
+
+console.log(arr.slice(1,4))
+console.log(arr.join('-'))
+console.log(arr)
+
+console.log(Array.from('abcXYZ'))
+console.log(Array.isArray(arr))
+
+console.log(arr.some(item => item == 'three'))
+console.log(arr.find(item => item == 'three'))
+console.log(arr.findIndex(item => item == 'three'))
+
+console.log(arr.filter(item => item.length == 3 ))
+console.log(arr.map(item => item + 'x' ))
+
+//! bundan sonrakiler orjinal diziyi değiştirir
+console.log(arr.fill('test', 3,5))
+console.log(arr)
+
+console.log(arr.shift())
+console.log(arr)
+
+console.log(arr.pop())
+console.log(arr)
+
+console.log(arr.unshift('first'))
+console.log(arr)
+
+console.log(arr.push('last'))
+console.log(arr)
+
+console.log(arr.sort())
+console.log(arr)
+
+console.log(arr.reverse())
+console.log(arr)
+
+let obj = {
+    keyBool : true,
+    keyNum: 123.45,
+    keyStr: 'value',
+    keyArr: [false,1,'two'],
+    keyObj: {key1:'value1', key2:'value2'}
+}
 
 
+let {keyStr, keyNum : newName, ...partObj} = obj 
+console.log(keyStr, newName, partObj)
+
+console.log(obj)
+
+let newObj = {...obj, newKey : 'new-value'}
+console.log(newObj)
