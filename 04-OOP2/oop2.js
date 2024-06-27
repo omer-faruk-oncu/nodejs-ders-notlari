@@ -287,6 +287,12 @@ class Car {
         this.#price = price
     }
 
+    static staticProp = 'bu bir static değerdir'
+
+    static staticMethod(){
+        return 'bu bir static methoddur'
+    }
+
 }
 
 const Ford = new Car('Ford', 'Mustang', 1967)
@@ -298,8 +304,23 @@ console.log(Ford.getPrice) // Getter methodlar bir property gibi çağrılır. (
 Ford.setPrice = 80000 // Setter methodlar bir propertyy gibi güncellenebilir.
 console.log(Ford.getPrice)
 
-console.log( Car.runEngine() )
+
+//*STATIC
+// static değere sadece class ile erişilebilir
+console.log( Car.staticProp )
+console.log( Car.staticMethod() )
+console.log(Car)
+
+/* ------------------------------------------------------- */
+//? ABSTRACTION: Soyutlama/Modelleme (Class ile obje üretebilme. Aynı amaç için kullanılan değişken ve methodların bir class içinde yazıyor olması)
+//? ENCAPCULLATION: Kapsülleme/Ayrıştırma (Kodların gizliliği, private değişkenlere erişilemiyor olması ve birbirinden bağımsız çalışmaları.)
+/* ------------------------------------------------------- */
+
+//* HAPPY CODDING :)
 
 
+/* ------------------------------------------------------- */
+/* ------------------------------------------------------- */
+/* ------------------------------------------------------- */
 /* ------------------------------------------------------- */
 /* ------------------------------------------------------- */
