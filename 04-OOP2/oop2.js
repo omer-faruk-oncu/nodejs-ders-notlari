@@ -287,29 +287,33 @@ class Car {
         this.#price = price
     }
 
-    static staticProp = 'bu bir static değerdir'
+    // Statics:
 
-    static staticMethod(){
-        return 'bu bir static methoddur'
+    static staticProp = 'bu bir static değerdir.'
+
+    static staticMethod() {
+        return 'bu bir static methoddur.'
     }
 
 }
 
 const Ford = new Car('Ford', 'Mustang', 1967)
-console.log(Ford)
-// console.log(Ford.price) // Private olduğu için erişilemez.
-// console.log(Ford.getPrice()) // Normal Method
-console.log(Ford.getPrice) // Getter methodlar bir property gibi çağrılır. (parantez yok)
-// Ford.setPrice(80000) // Normal method
-Ford.setPrice = 80000 // Setter methodlar bir propertyy gibi güncellenebilir.
-console.log(Ford.getPrice)
+// console.log(Ford)
+// // console.log(Ford.price) // Private olduğu için erişilemez.
+// // console.log(Ford.getPrice()) // Normal Method
+// console.log(Ford.getPrice) // Getter methodlar bir property gibi çağrılır. (parantez yok)
+// // Ford.setPrice(80000) // Normal method
+// Ford.setPrice = 80000 // Setter methodlar bir propertyy gibi güncellenebilir.
+// console.log(Ford.getPrice)
 
-
-//*STATIC
-// static değere sadece class ile erişilebilir
+//* STATICS
+// Static değerlere sadece ana CLASS ile erişilebilir.
 console.log( Car.staticProp )
 console.log( Car.staticMethod() )
-console.log(Car)
+console.log( Car )
+// Static özellik/metodlara instance ile erişilemez.
+console.log( Ford.staticProp )
+
 
 /* ------------------------------------------------------- */
 //? ABSTRACTION: Soyutlama/Modelleme (Class ile obje üretebilme. Aynı amaç için kullanılan değişken ve methodların bir class içinde yazıyor olması)
@@ -317,10 +321,3 @@ console.log(Car)
 /* ------------------------------------------------------- */
 
 //* HAPPY CODDING :)
-
-
-/* ------------------------------------------------------- */
-/* ------------------------------------------------------- */
-/* ------------------------------------------------------- */
-/* ------------------------------------------------------- */
-/* ------------------------------------------------------- */
