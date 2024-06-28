@@ -46,31 +46,29 @@ class Car {
         this.brand = brand
         this.model = model
         this.year = year
-
     }
-
     runEngine() {
         this.isRunning = true
+        //console.log(this.isRunning)
         console.log('Engine started')
         return this.isRunning
     }
-
     newMethod() {
         this.runEngine()
     }
 }
 
-const Ford = new Car('Ford', 'Mustang', 1967)
-// console.log(Ford)
-// Ford.newMethod()
-console.log(Ford.isRunning)
-Ford.runEngine()
-console.log(Ford.isRunning)
+//const Ford = new Car('Ford', 'Mustang', 1967)
+//console.log(Ford)
+//Ford.newMethod()
+// console.log(Ford.isRunning)
+// Ford.runEngine()
+// console.log(Ford.isRunning)
 
-const Mercedes = new Car('Mercedes', 'CLK300', 2020)
-console.log(Mercedes)
-const Renault = new Car('Renault', 'Megane', 2010)
-console.log(Renault)
+// const Mercedes = new Car('Mercedes', 'CLK300', 2020)
+// console.log(Mercedes)
+// const Renault = new Car('Renault', 'Megane', 2010)
+// console.log(Renault)
 
 /* ------------------------------------------------------- *
 //* INHERITANCE = MirasAlma. Başka bir classın tüm property/methodlarını devralma (parent-child kurulur.)
@@ -79,9 +77,9 @@ console.log(Renault)
 class Vehicle {
 
     vehicleIsActive = false
-    vehicleIsActive2 = false
-    vehicleIsActive3 = false
-    vehicleIsActive4 = false
+    // vehicleIsActive2 = false
+    // vehicleIsActive3 = false
+    // vehicleIsActive4 = false
 
     constructor(vehicleType) {
         this.vehicleType = vehicleType
@@ -91,7 +89,6 @@ class Vehicle {
 class Car extends Vehicle {
 
     isRunning = false
-
     // constructor(brand, model, year = 2000) {
     //     super('Car')
     //     this.brand = brand
@@ -116,10 +113,10 @@ class Car extends Vehicle {
 
 // class Truck extends Vehicle { ... }
 
-// const Mercedes = new Car('Mercedes', 'CLK300', 2020)
-// console.log(Mercedes)
-// const Mercedes = new Car('Mercedes', 'CLK300', 2020, 'Car')
-// console.log(Mercedes)
+//  const Mercedes = new Car('Mercedes', 'CLK300', 2020)
+//  console.log(Mercedes)
+ const Mercedes = new Car('Mercedes', 'CLK300', 2020, 'Car')
+ console.log(Mercedes)
 
 class Accessory extends Car {
 
@@ -130,13 +127,13 @@ class Accessory extends Car {
 
 }
 
-// const BoshClimate = new Accessory('Bosh Climate', 'Ford', 'Mustang', 1967, 'Car')
+ const BoshClimate = new Accessory('Bosh Climate', 'Ford', 'Mustang', 1967, 'Car')
 // console.log( BoshClimate)
 
-const Mercedes = new Car('Mercedes', 'CLK300', 2020, 'Car')
-console.log( Object.values(Mercedes))
-const BoshClimate = new Accessory('Bosh Climate', Mercedes.brand, Mercedes.model, Mercedes.year, Mercedes.vehicleType)
-console.log( BoshClimate)
+// const Mercedes = new Car('Mercedes', 'CLK300', 2020, 'Car')
+// console.log( Object.values(Mercedes))
+// const BoshClimate = new Accessory('Bosh Climate', Mercedes.brand, Mercedes.model, Mercedes.year, Mercedes.vehicleType)
+ console.log( BoshClimate)
 
 /* ------------------------------------------------------- *
 //? Polymorphism: Miras aldığımız sınıfın özellik/methodlarını yeniden yazabilme.
@@ -145,37 +142,28 @@ console.log( BoshClimate)
 
 
 class Vehicle {
-
     vehicleIsActive = false
-
     constructor(vehicleType) {
         this.vehicleType = vehicleType
     }
-
     getDetails() {
         console.log('Vehicle Class getDetails()')
         return this
     }
 }
-
 class Car extends Vehicle {
-
     isRunning = false
-
     constructor(brand, model, year, vehicleType) {
         super(vehicleType)
         this.brand = brand
         this.model = model
         this.year = year
-
     }
-
     runEngine() {
         this.isRunning = true
         console.log('Engine started')
         return this.isRunning
     }
-
     // Override: Parent classtaki methodu aynı isimle tekrar tanımlama.
     // Override işlemi parent classtaki methodu ezer (önceliğini alır)
     getDetails() {
@@ -191,11 +179,11 @@ class Car extends Vehicle {
     // }
 }
 
-const Ford = new Car('Ford', 'Mustang', 1967, 'Car')
-console.log(Ford)
-console.log(Ford.getDetails())
+ const Ford = new Car('Ford', 'Mustang', 1967, 'Car')
+ console.log(Ford)
+ console.log(Ford.getDetails())
 
-/* ------------------------------------------------------- *
+/* ------------------------------------------------------- */
 //? Access Modifiers:
 //? - PUBLIC: Genel erişime açık. (Parent: Yes, Child: Yes, Instance: Yes)
 //? - _PROTECTED: Sadece tanımlı olduğu class ve Inherit edilen child-class erişebilir. (Parent: Yes, Child: Yes, Instance: No) (JS Desteklemez.)
@@ -255,7 +243,7 @@ console.log(Ford.vehicleIsActive) // public: erişebilir, protected: erişemez, 
 const BUYUK_HARF_ISIMLENDIRME = Bu bir constant değişkendir. Developer olarak bunu silme, değiştirirken dikkatli ol.
 const _alttanTireIleBaslayan = BU bir proctected değişkendir. Developer olarak buna dokunma (erişme bile)
 
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 //? GETTER & SETTER METHODS: Görevi veri getirme (getter) ve veri güncelleme (setter) olan metodlardır.
 //? "STATIC" KEYWORD: Class'dan direkt erişim. (Instance erişemez.)
 
