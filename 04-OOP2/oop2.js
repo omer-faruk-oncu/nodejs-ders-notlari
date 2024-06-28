@@ -183,7 +183,7 @@ class Car extends Vehicle {
  console.log(Ford)
  console.log(Ford.getDetails())
 
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 //? Access Modifiers:
 //? - PUBLIC: Genel erişime açık. (Parent: Yes, Child: Yes, Instance: Yes)
 //? - _PROTECTED: Sadece tanımlı olduğu class ve Inherit edilen child-class erişebilir. (Parent: Yes, Child: Yes, Instance: No) (JS Desteklemez.)
@@ -196,11 +196,9 @@ class Vehicle {
     #privateProp = 'parent erişebilir.'
 
     vehicleIsActive = false
-
     constructor(vehicleType) {
         this.vehicleType = vehicleType
     }
-
     getDetails() {
         console.log('Vehicle Class getDetails()')
         return this
@@ -210,15 +208,12 @@ class Vehicle {
 class Car extends Vehicle {
 
     isRunning = false
-
     constructor(brand, model, year, vehicleType) {
         super(vehicleType)
         this.brand = brand
         this.model = model
         this.year = year
-
     }
-
     runEngine() {
         this.isRunning = true
         console.log('Engine started')
@@ -233,9 +228,9 @@ class Car extends Vehicle {
 }
 
 const Ford = new Car('Ford', 'Mustang', 1967, 'Car')
-// console.log(Ford)
-console.log(Ford.runEngine())
-console.log(Ford.vehicleIsActive) // public: erişebilir, protected: erişemez, private: erişemez.
+ console.log(Ford)
+ console.log(Ford.runEngine())
+ console.log(Ford.vehicleIsActive) // public: erişebilir, protected: erişemez, private: erişemez.
 
 /* ------------------------------------------------------- *
 //* Piyasa Standartı İsimlendirme:
@@ -243,38 +238,32 @@ console.log(Ford.vehicleIsActive) // public: erişebilir, protected: erişemez, 
 const BUYUK_HARF_ISIMLENDIRME = Bu bir constant değişkendir. Developer olarak bunu silme, değiştirirken dikkatli ol.
 const _alttanTireIleBaslayan = BU bir proctected değişkendir. Developer olarak buna dokunma (erişme bile)
 
-/* ------------------------------------------------------- *
+/* ------------------------------------------------------- */
 //? GETTER & SETTER METHODS: Görevi veri getirme (getter) ve veri güncelleme (setter) olan metodlardır.
 //? "STATIC" KEYWORD: Class'dan direkt erişim. (Instance erişemez.)
 
 class Car {
-
     isRunning = false
     #price = 99
-
     constructor(brand, model, year) {
         this.brand = brand
         this.model = model
         this.year = year
-
     }
-
     runEngine() {
         this.isRunning = true
         console.log('Engine started')
         return this.isRunning
     }
-
     get getPrice() {
         console.log('Fiyat yazılıyor:')
         return this.#price
     }
-
     set setPrice(price) {
         console.log('Fiyat güncellendi.')
         this.#price = price
+     
     }
-
     // Statics:
 
     static staticProp = 'bu bir static değerdir.'
@@ -286,19 +275,20 @@ class Car {
 }
 
 const Ford = new Car('Ford', 'Mustang', 1967)
-// console.log(Ford)
-// // console.log(Ford.price) // Private olduğu için erişilemez.
-// // console.log(Ford.getPrice()) // Normal Method
-// console.log(Ford.getPrice) // Getter methodlar bir property gibi çağrılır. (parantez yok)
-// // Ford.setPrice(80000) // Normal method
-// Ford.setPrice = 80000 // Setter methodlar bir propertyy gibi güncellenebilir.
-// console.log(Ford.getPrice)
+//console.log(Ford)
+//console.log(Ford.price) // Private olduğu için erişilemez.
+//console.log(Ford.getPrice()) // Normal Method
+//console.log(Ford.getPrice) // Getter methodlar bir property gibi çağrılır. (parantez yok)
+// Ford.setPrice(80000) // Normal method
+ //Ford.setPrice = 80000 // Setter methodlar bir propertyy gibi güncellenebilir.
+ //console.log(Ford.getPrice)
 
 //* STATICS
 // Static değerlere sadece ana CLASS ile erişilebilir.
-console.log( Car.staticProp )
-console.log( Car.staticMethod() )
+// console.log( Car.staticProp )
+// console.log( Car.staticMethod() )
 console.log( Car )
+console.log(Ford)
 // Static özellik/metodlara instance ile erişilemez.
 console.log( Ford.staticProp )
 
