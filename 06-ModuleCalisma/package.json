@@ -1,0 +1,16 @@
+{
+  "name": "06-modulecalisma",
+  "version": "1.0.0",
+  "main": "calisma.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2",
+    "my-package": "^0.0.0"
+  }
+}
