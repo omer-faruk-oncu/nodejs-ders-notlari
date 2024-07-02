@@ -1,12 +1,29 @@
-"use strict"
+"use strict";
 /* -------------------------------------- *
 
         NODEJS
 
-/* -------------------------------------- */
+/* -------------------------------------- *
 // HTTPSERVER:
 
 const http = require('node:http') // BuiltIn Module.
+
+/* -------------------------------------- *
+
+//console.log('selam')
+
+const http = require("http");
+
+const app = http.createServer((req, res) => {
+  
+  if (req.url == "/api") {
+    res.end("API");
+  } else {
+    res.end("HTML");
+  }
+});
+
+app.listen(8000, () => console.log("server started: http://127.0.0.1:8000"));
 
 /* -------------------------------------- *
 
@@ -48,7 +65,7 @@ const app = http.createServer((req, res) => {
 
 app.listen(8000, () => console.log('http://127.0.0.1:8000'))
 
-/* -------------------------------------- */
+/* -------------------------------------- *
 
 const app = http.createServer((req, res) => {
 
@@ -100,5 +117,25 @@ const app = http.createServer((req, res) => {
 }).listen(8000, () => console.log('http://127.0.0.1:8000'))
 
 /* -------------------------------------- */
+
+
+const http = require("http");
+
+const app = http.createServer((req, res) => {
+  
+  if (req.url == "/api") {
+    // res.write('write')
+    // res.end("API");
+    console.log(req.method)
+
+
+
+  } else {
+    res.end("HTML");
+  }
+});
+
+app.listen(8000, () => console.log("server started: http://127.0.0.1:8000"));
+
 /* -------------------------------------- */
 /* -------------------------------------- */
