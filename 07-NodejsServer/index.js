@@ -123,12 +123,22 @@ const http = require("http");
 
 const app = http.createServer((req, res) => {
   
-  if (req.url == "/api") {
+ if (req.url == "/api") {
     // res.write('write')
     // res.end("API");
-    console.log(req.method)
+    //console.log(req.method)
 
-
+    if (req.method == 'GET') {
+      const obj = {
+        result: true,
+        message:'merhaba'
+      }
+      res.write(JSON.stringify(obj))
+      res.end()
+    }
+    else{
+      res.end("Wrong Method")
+    } 
 
   } else {
     res.end("HTML");
