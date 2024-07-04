@@ -17,10 +17,8 @@ const app = express()
 //     .put((req, res) => { res.end('app.route put çalıştı')})
 //     .delete((req, res) => { res.end('app.route delete çalıştı')})
 
-//app.get('/path', (req, res) => { res.send('burası path')})
-
-app.get(/^\/xyz/, (req, res) => { res.send('now in here: /xyz$/')})
-
+console.log(__dirname)
+app.get('/package', (req, res) => { res.sendFile(__dirname + '/package.json')})
 
 /*---------------*/
 /*---------------*/
