@@ -70,7 +70,7 @@ router.get(/\/abc|\/acd/, (req, res) => {
 //? 1.SORU d
 
 
-   router.get(/^\/Hello$/, (req, res) => {
+   router.get(/Hello/, (req, res) => {
     res.send("<h1>Route Fourth</h1>");
     });
    

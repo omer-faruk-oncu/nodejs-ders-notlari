@@ -39,7 +39,7 @@ Tür	                    Web framework	                        JavaScript çalı
 Üzerine Kurulu	        NodeJS	                                Chrome'un V8 JavaScript motoru
 Odak	                Sunucu tarafı geliştirme	            Genel amaçlı JavaScript programlama
 Ana Özellikler	        Yönlendirme, middleware, şablonlama	    Engellenmeyen I/O, olay odaklı programlama
-Kullanım Alanları	Web uygulamaları oluşturma, RESTful API'ler	Sunucu tarafı betik yazma, komut 
+Kullanım Alanları	  Web uygulamaları oluşturma, RESTful API'ler	Sunucu tarafı betik yazma, komut 
                                                                 satırı araçları oluşturma
 
 5. Middleware nedir ve işlevleri nelerdir?
@@ -72,6 +72,7 @@ Author: Burada, paketin yazarını ve iletişim bilgilerini belirtebilirsiniz.
 License: Bu alan, paketinizin hangi şartlar altında dağıtıldığını belirtir. Yaygın lisanslar arasında MIT, GPL ve Apache 2.0 bulunur.
 
 Repository: Bu alan, kodunuzun barındırıldığı sürüm kontrol deposunu (örneğin, GitHub) işaret edebilir. Kullanıcıların projenizi bulmalarına ve katkıda bulunmalarına yardımcı olur.
+
 Browserslist: Projenizin desteklediği tarayıcıları ve sürümlerini belirten bir yapılandırma bölümü. Bu, ön yüz projelerinde uyumluluğu sağlamak için yaygın olarak kullanılır.
 
 7. Express.js'de res.send() ve res.json() arasındaki fark nedir?
@@ -85,3 +86,6 @@ app.use(): Tüm HTTP yöntemleri için çalıştırılması gereken middleware'i
 app.get(): Sadece GET istekleri için çalıştırılması gereken middleware'i belirtmek için kullanılır.
 
 */
+
+
+
