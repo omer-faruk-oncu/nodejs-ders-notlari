@@ -17,6 +17,6 @@ router.delete('/', (req, res) => { res.send({ message: 'Delete Page' }) })
 //     .get((req, res) => { res.send('get')})
 //     .post((req, res) => { res.send('post')})
 
-router.get('/user/:id', (req, res) => { res.send({ message: req.params.id }) })
+//router.get('/user/:id', (req, res) => { res.send({ message: req.params.id }) })
 
 module.exports = router
