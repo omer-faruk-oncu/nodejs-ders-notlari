@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 8000;
 //? Middleware functions must be has three parameters. 
 //? Last parameter is for next().
 
-// Middleware:
+Middleware:
 app.get('/', (req, res, next) => {
 
     console.log('middleware çalıştı.')
@@ -35,7 +35,7 @@ app.get('/', (req, res, next) => {
 
 })
 
-// Route-Path:
+Route-Path:
 app.get('/', (req, res) => {
 
     console.log('route-path çalıştı.')
@@ -122,23 +122,22 @@ app.get('/', (req, res) => {
 //     next()
 // })
 
-// const middleware1 = (req, res, next) => {
-//     console.log('middleware-1 çalıştı.')
-//     next()
-//     // next('route')
-// }
+const middleware1 = (req, res, next) => {
+    console.log('middleware-1 çalıştı.')
+    next()
+ }
 
-// const middleware2 = (req, res, next) => {
-//     console.log('middleware-2 çalıştı.')
-//     next()
-// }
+const middleware2 = (req, res, next) => {
+    console.log('middleware-2 çalıştı.')
+    next()
+}
 
 // app.get('/', middleware1)
 //? use ile middleware çağırabiliriz:
 // app.use(middleware1)
 // app.use(middleware2)
 //? Tek use içinde virgülle ayırp kullanabiliriz:
-// app.use(middleware1, middleware2)
+app.use(middleware1, middleware2)
 // app.use(middleware2, middleware1)
 //? Array içinde çağırabiliz:
 // app.use([middleware1, middleware2])
@@ -146,13 +145,13 @@ app.get('/', (req, res) => {
 // app.use('/test', [middleware1, middleware2]) // use() methodu all() methodu gibi tüm methodlara izin verir.
 // app.get('/test', [middleware1, middleware2]) // sadece get() için çalışır
 //? Middlewareleri direk route-controller öncesinde de çağırabiliriz:
-// app.all('/*', [middleware1, middleware2], (req, res) => {
+app.all('/*', [middleware1, middleware2], (req, res) => {
 
-//     res.send({
-//         message: 'Sorun yok.',
-//     })
+    res.send({
+        message: 'Sorun yok.',
+    })
 
-// })
+ })
 // app.get('/*', (req, res) => {
 
 //     res.send({
