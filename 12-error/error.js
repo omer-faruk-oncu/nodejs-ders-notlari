@@ -11,14 +11,7 @@ const PORT = process.env.PORT || 8000;
 
 /* ------------------------------------------------------- *
 
-app.get("/user/:id", (req, res) => {
-  //throw new Error('bu bir hata')
-
-  // req.send({
-  //     id:req.params.id,
-  //     message: 'Hello world'
-  // })
-
+app.get("/user/:id", (req, res,next) => {
   try {
     if (isNaN(req.params.id)) {
       throw new Error("ID sayı olmalı");
@@ -29,14 +22,24 @@ app.get("/user/:id", (req, res) => {
       });
     }
   } catch (error) {
-    res.status(400).send({
-      error: true,
-      message: error.message,
-    });
+    next(error);
   }
-  
-  /* ------------------------------------------------------- */
+});
+
 /* ------------------------------------------------------- */
+
+const asyncFunction = async() =>{
+    throw new Error ('async-error')
+}
+
+app.get('/async', async (req,res, next)=>{
+    await asyncFunction()
+        .then()
+        .catch((err)=>{
+            next(err)
+        })
+})
+/* ------------------------------------------------------- *
 
 app.get("/user/:id", (req, res) => {
   //throw new Error('bu bir hata')
@@ -64,17 +67,18 @@ app.get("/user/:id", (req, res) => {
   
   
   /* ------------------------------------------------------- */
-  
-  const errorHandler = (error, req, res, next) => {
 
-    const statusCode = res?.errorStatusCode || 500
-      res.status(statusCode).send({
-          error: true,
-          message: error.message,
-        });
-    };
+const errorHandler = (error, req, res, next) => {
+  console.log("error handler çalıştı");
 
-app.use(errorHandler)
+  const statusCode = res?.errorStatusCode || 500;
+  res.status(statusCode).send({
+    error: true,
+    message: error.message,
+  });
+};
+
+app.use(errorHandler);
 
 /* ------------------------------------------------------- */
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
