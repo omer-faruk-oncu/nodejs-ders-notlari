@@ -48,9 +48,15 @@ app.get("/user/:id", (req, res) => {
 
   
     if (isNaN(req.params.id)) {
-      throw new Error("ID sayı olmalı");
+        
+        res.errorStatusCode = 400
+
+        throw new Error("ID sayı olmalı");
+
     } else {
+
       res.send("ID doğru")
+      
     }
 })
     
