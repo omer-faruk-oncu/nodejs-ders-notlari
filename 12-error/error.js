@@ -28,16 +28,15 @@ app.get("/user/:id", (req, res,next) => {
 
 /* ------------------------------------------------------- */
 
+require('express-async-errors')
 const asyncFunction = async() =>{
     throw new Error ('async-error')
 }
 
 app.get('/async', async (req,res, next)=>{
-    await asyncFunction()
-        .then()
-        .catch((err)=>{
-            next(err)
-        })
+    //await asyncFunction()
+    throw new Error ('async-error', {cause: 'async içindeki hata'})
+       
 })
 /* ------------------------------------------------------- *
 
@@ -75,6 +74,8 @@ const errorHandler = (error, req, res, next) => {
   res.status(statusCode).send({
     error: true,
     message: error.message,
+    stack:error.stack,
+    cause: error.cause
   });
 };
 
