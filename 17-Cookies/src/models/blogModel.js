@@ -4,7 +4,7 @@
 ------------------------------------------------------- */
 // Mongoose:
 
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 /* ------------------------------------------------------- *
 
@@ -49,20 +49,21 @@ const ModelName = mongoose.model('ModelName', ModelSchema)
 /* ------------------------------------------------------- */
 // BlogCategory Schema:
 
-const BlogCategorySchema = new mongoose.Schema({
-
+const BlogCategorySchema = new mongoose.Schema(
+  {
     // _id
 
     name: {
-        type: String,
-        trim: true,
-        required: true
-    }
-
-}, {
-    collection: 'blogCategories',
-    timestamps: true
-})
+      type: String,
+      trim: true,
+      required: true,
+    },
+  },
+  {
+    collection: "blogCategories",
+    timestamps: true,
+  }
+);
 
 // Set Model:
 // const BlogCategory = mongoose.model('BlogCategory', BlogCategorySchema)
@@ -70,42 +71,49 @@ const BlogCategorySchema = new mongoose.Schema({
 /* ------------------------------------------------------- */
 // BlogPost Schema:
 
-const BlogPostSchema = new mongoose.Schema({
-
+const BlogPostSchema = new mongoose.Schema(
+  {
     // _id
 
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
 
-    categoryId: { // Default Relation: ManyToOne
-        type: mongoose.Schema.Types.ObjectId, // Hexadecimal Format: 'fedcba9876543210'
-        ref: 'BlogCategory', // ID hangi Model'e ait. (mongoose.model('ModelName', Schema))
-        required: true,
-        // unique: true, // Convert to OneToOne Relation.
+    categoryId: {
+      // Default Relation: ManyToOne
+      type: mongoose.Schema.Types.ObjectId, // Hexadecimal Format: 'fedcba9876543210'
+      ref: "BlogCategory", // ID hangi Model'e ait. (mongoose.model('ModelName', Schema))
+      required: true,
+      // unique: true, // Convert to OneToOne Relation.
     },
 
     title: {
-        type: String,
-        trim: true,
-        required: true
+      type: String,
+      trim: true,
+      required: true,
     },
 
     content: {
-        type: String,
-        trim: true,
-        required: true
+      type: String,
+      trim: true,
+      required: true,
+    },
+
+    published: {
+      type: Boolean,
+      default: true,
     },
 
     // createdAt // timestamps: true
     // updatedAt // timestamps: true
-
-}, {
-    collection: 'blogPosts',
-    timestamps: true
-})
+  },
+  {
+    collection: "blogPosts",
+    timestamps: true,
+  }
+);
 
 // Set Model:
 // const BlogPost = mongoose.model('BlogPost', BlogPostSchema)
@@ -120,6 +128,6 @@ const BlogPostSchema = new mongoose.Schema({
 /* ------------------------------------------------------- */
 
 module.exports = {
-    BlogCategory: mongoose.model('BlogCategory', BlogCategorySchema),
-    BlogPost: mongoose.model('BlogPost', BlogPostSchema)
-}
+  BlogCategory: mongoose.model("BlogCategory", BlogCategorySchema),
+  BlogPost: mongoose.model("BlogPost", BlogPostSchema),
+};
