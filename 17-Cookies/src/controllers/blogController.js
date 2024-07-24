@@ -98,11 +98,25 @@ module.exports.blogPost = {
 
     list: async (req, res) => {
 
-        console.log(req.query)
+        //console.log(req.query)
+
+        const filter = req.query?.filter || {}
+
+        const search = req.query?.search
+        console.log(search)
+
+        for(let key in search)
+            search[key] = {$regex: search[key] }
+        
+        console.log(search
+
+        )
+
+        //console.log(filter)
 
         // const data = await BlogPost.find({ ...filter }, { ...select })
         // const data = await BlogPost.find({}, { _id: 0, categoryId: 1, title: 1, content: 1 })
-        const data = await BlogPost.find().populate('categoryId')
+        const data = await BlogPost.find({...filter, ...search})
 
         res.status(200).send({
             error: false,
