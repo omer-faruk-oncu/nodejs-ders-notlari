@@ -39,6 +39,8 @@ app.use(session({ // General Settings.
 
 app.use(require('./src/middlewares/userControl'))
 
+app.use(require('./src/middlewares/findSearchSortPge'))
+
 /* ------------------------------------------------------- */
 
 app.all('/', (req, res) => {
