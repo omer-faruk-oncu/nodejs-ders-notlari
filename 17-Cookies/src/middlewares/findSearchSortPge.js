@@ -25,18 +25,41 @@ module.exports = async (req, res, next) => {
   let skip = Number(req.query?.skip);
   skip = skip > 0 ? skip : (page - 1) * limit;
 
-//   const data = await BlogPost.find({ ...filter, ...search })
-//     .sort(sort)
-//     .skip(skip)
-//     .limit(limit)
-//     .populate("categoryId");
-// };
+  //   const data = await BlogPost.find({ ...filter, ...search })
+  //     .sort(sort)
+  //     .skip(skip)
+  //     .limit(limit)
+  //     .populate("categoryId");
+  // };
 
-res.getMOdelList = async function (MOdel,populate=null) {
-    retutrn await Model.find({ ...filter, ...search })
-        .sort(sort)
-        .skip(skip)
-        .limit(limit)
-        .populate(populate);
+  res.getModelList = async function (Model, populate = null) {
+    return await Model.find({ ...filter, ...search })
+      .sort(sort)
+      .skip(skip)
+      .limit(limit)
+      .populate(populate);
+  };
+
+  res.getModelListDetails = async function (Model) {
+    const data = Model.find({ ...filter, ...search });
+
+    let details = {
+      filter,
+      search,
+      sort,
+      skip,
+      limit,
+      page,
+      pages: {
+        previous: page > 1 ? page - 1 : false,
+        current: page,
+        next: page + 1,
+        total: Math.ceil(data.length / limit),
+      },
+      totalRecords: data.length,
     };
-}
+    return details;
+  };
+
+  next();
+};
