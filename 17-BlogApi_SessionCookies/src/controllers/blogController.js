@@ -13,10 +13,13 @@ module.exports.blogCategory = {
 
     list: async (req, res) => {
 
-        const data = await BlogCategory.find()
+        // const data = await BlogCategory.find()
+
+        const data = await res.getModelList(BlogCategory)
 
         res.status(200).send({
             error: false,
+            details: await res.getModelListDetails(BlogCategory),
             result: data
         })
 
@@ -98,10 +101,9 @@ module.exports.blogPost = {
 
     list: async (req, res) => {
 
-        // const data = await BlogPost.find({ ...filter }, { ...select })
-        // const data = await BlogPost.find({}, { _id: 0, categoryId: 1, title: 1, content: 1 })
-        const data = await BlogPost.find({}, { categoryId: true, title: true, content: true }).populate('categoryId')
-
+        const data = await res.getModelList(BlogPost, 'categoryId')
+   
+       
         res.status(200).send({
             error: false,
             result: data
