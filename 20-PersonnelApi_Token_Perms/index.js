@@ -41,6 +41,17 @@ app.use(
   }),
 );
 
+
+const morgan = require('morgan')
+
+// app.use(
+//   morgan(
+//     'TIME=":date[iso]" - URL=":url" - Method=":method" - IP=":remote-addr" - Ref=":referrer" - Status=":status" - Sign=":user-agent" (:response-time[digits] ms)'
+//   )
+// );
+
+
+
 // Authentication Middleware:
 app.use(require('./src/middlewares/authentication'))
 
