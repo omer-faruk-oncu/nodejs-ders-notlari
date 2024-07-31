@@ -41,6 +41,15 @@ app.use(
   })
 );
 
+
+// DOCUMENTATION:
+// $ npm i swagger-autogen # JSON creator
+// $ npm i swagger-ui-express
+// $ npm i redoc-express
+
+
+
+
 app.use(require('./src/middlewares/logger'))
 
 // Authentication Middleware:
