@@ -38,32 +38,11 @@ app.use(
     //     httpOnly: false,
     //     maxAge: 24 * 60 * 60 * 1000,
     //   }
-  })
+  }),
 );
 
-
-// DOCUMENTATION:
-// $ npm i swagger-autogen # JSON creator
-// $ npm i swagger-ui-express
-// $ npm i redoc-express
-
-app.use('/documents/json', (req,res) => {
-  res.sendFile('swagger.json', {root: '.'})
-})
-
-const swaggerUi = require('swagger-ui-express')
-const swaggerJson = require('./swagger.json')
-
-app.use('/documents/swagger', swaggerUi.serve, swaggerUi.setup(swaggerJson, { swaggerOptions: { persistAuthorization: true } }))
-
-const redoc = require('redoc-express')
-
-app.use('/documents/redoc', redoc({specUrl : '/documents/json', title: 'Redoc UI' }))
-
-app.use(require('./src/middlewares/logger'))
-
 // Authentication Middleware:
-app.use(require("./src/middlewares/authentication"));
+app.use(require('./src/middlewares/authentication'))
 
 // res.getModelList():
 app.use(require("./src/middlewares/findSearchSortPage"));
@@ -75,12 +54,12 @@ app.all("/", (req, res) => {
     message: "Welcome to PERSONNEL API",
     // session: req.session,
     // isLogin: req.isLogin,
-    user: req.user,
+    user: req.user
   });
 });
 
 // /auth
-app.use("/auth", require("./src/routes/auth.router"));
+app.use('/auth', require('./src/routes/auth.router'))
 
 // /tokens
 app.use("/tokens", require("./src/routes/token.router"));
@@ -115,3 +94,4 @@ app.listen(PORT, () => console.log("http://127.0.0.1:" + PORT));
 //     .then((res) => console.log("Data synched"))
 //     .catch((err) => console.error("Data could not synched"));
 // }
+
