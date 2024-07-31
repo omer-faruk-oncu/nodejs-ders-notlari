@@ -47,8 +47,18 @@ app.use(
 // $ npm i swagger-ui-express
 // $ npm i redoc-express
 
+app.use('/documents/json', (req,res) => {
+  res.sendFile('swagger.json', {root: '.'})
+})
 
+const swaggerUi = require('swagger-ui-express')
+const swaggerJson = require('./swagger.json')
 
+app.use('/documents/swagger', swaggerUi.serve, swaggerUi.setup(swaggerJson, { swaggerOptions: { persistAuthorization: true } }))
+
+const redoc = require('redoc-express')
+
+app.use('/documents/redoc', redoc({specUrl : '/documents/json' }))
 
 app.use(require('./src/middlewares/logger'))
 
