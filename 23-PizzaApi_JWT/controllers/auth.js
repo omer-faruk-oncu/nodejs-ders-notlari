@@ -51,7 +51,7 @@ module.exports = {
         }
         /* SIMPLE TOKEN */
 
-        /* JWT */
+        /* JWT */ 
         // ACCESS TOKEN
         const accessData = {
             _id: user._id,
@@ -95,14 +95,14 @@ module.exports = {
                 schema: {
                     "bearer": {
                         refresh: '...refresh_token...'
-                    }
+                    } 
                 }
             }
         */
 
         const refreshToken = req.body?.bearer?.refresh
 
-        if (refreshToken) {
+        if (refreshToken) { 
 
             const refreshData = await jwt.verify(refreshToken, process.env.REFRESH_KEY)
             // console.log(refreshData)
