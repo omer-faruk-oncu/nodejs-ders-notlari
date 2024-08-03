@@ -76,17 +76,17 @@ const CarSchema = new mongoose.Schema({
         required: true,
     },
 
-    createdId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
-    },
+    // createdId: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User',
+    //     required: true,
+    // },
    
-    updatedId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
-    },
+    // updatedId: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User',
+    //     required: true,
+    // },
 
 }, { collection: 'cars', timestamps: true })
 

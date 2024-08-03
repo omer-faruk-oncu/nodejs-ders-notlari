@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Flight Reservation API",
-    "description": "Flight Reservation Management System",
+    "title": "Rent A Car API",
+    "description": "Rent A Car Management System",
     "termsOfService": "http://www.CourseName.com/#",
     "contact": {
       "name": "CourseName",
@@ -338,12 +338,12 @@
         }
       }
     },
-    "/flights/": {
+    "/cars/": {
       "get": {
         "tags": [
-          "Flights"
+          "Cars"
         ],
-        "summary": "List Flights",
+        "summary": "List Cars",
         "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
         "responses": {
           "200": {
@@ -353,9 +353,9 @@
       },
       "post": {
         "tags": [
-          "Flights"
+          "Cars"
         ],
-        "summary": "Create Flight",
+        "summary": "Create Car",
         "description": "",
         "parameters": [
           {
@@ -363,7 +363,37 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Flight"
+              "type": "object",
+              "properties": {
+                "plateNumber": {
+                  "type": "string",
+                  "example": "34ABC345"
+                },
+                "brand": {
+                  "type": "string",
+                  "example": "Opel"
+                },
+                "model": {
+                  "type": "string",
+                  "example": "Astra"
+                },
+                "year": {
+                  "type": "number",
+                  "example": 2021
+                },
+                "isAutomatic": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "pricePerDay": {
+                  "type": "number",
+                  "example": 189.99
+                },
+                "isPublish": {
+                  "type": "boolean",
+                  "example": false
+                }
+              }
             }
           }
         ],
@@ -374,12 +404,12 @@
         }
       }
     },
-    "/flights/{id}": {
+    "/cars/{id}": {
       "get": {
         "tags": [
-          "Flights"
+          "Cars"
         ],
-        "summary": "Get Single Flight",
+        "summary": "Get Single Car",
         "description": "",
         "parameters": [
           {
@@ -397,9 +427,9 @@
       },
       "put": {
         "tags": [
-          "Flights"
+          "Cars"
         ],
-        "summary": "Update Flight",
+        "summary": "Update Car",
         "description": "",
         "parameters": [
           {
@@ -415,8 +445,33 @@
             "schema": {
               "type": "object",
               "properties": {
-                "schema": {
-                  "$ref": "#/definitions/Flight"
+                "plateNumber": {
+                  "type": "string",
+                  "example": "34ABC345"
+                },
+                "brand": {
+                  "type": "string",
+                  "example": "Opel"
+                },
+                "model": {
+                  "type": "string",
+                  "example": "Astra"
+                },
+                "year": {
+                  "type": "number",
+                  "example": 2021
+                },
+                "isAutomatic": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "pricePerDay": {
+                  "type": "number",
+                  "example": 189.99
+                },
+                "isPublish": {
+                  "type": "boolean",
+                  "example": false
                 }
               }
             }
@@ -430,9 +485,9 @@
       },
       "delete": {
         "tags": [
-          "Flights"
+          "Cars"
         ],
-        "summary": "Delete Flight",
+        "summary": "Delete Car",
         "description": "",
         "parameters": [
           {
@@ -453,9 +508,9 @@
       },
       "patch": {
         "tags": [
-          "Flights"
+          "Cars"
         ],
-        "summary": "Update Flight",
+        "summary": "Update Car",
         "description": "",
         "parameters": [
           {
@@ -471,147 +526,35 @@
             "schema": {
               "type": "object",
               "properties": {
-                "schema": {
-                  "$ref": "#/definitions/Flight"
+                "plateNumber": {
+                  "type": "string",
+                  "example": "34ABC345"
+                },
+                "brand": {
+                  "type": "string",
+                  "example": "Opel"
+                },
+                "model": {
+                  "type": "string",
+                  "example": "Astra"
+                },
+                "year": {
+                  "type": "number",
+                  "example": 2021
+                },
+                "isAutomatic": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "pricePerDay": {
+                  "type": "number",
+                  "example": 189.99
+                },
+                "isPublish": {
+                  "type": "boolean",
+                  "example": false
                 }
               }
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        }
-      }
-    },
-    "/passengers/": {
-      "get": {
-        "tags": [
-          "Passengers"
-        ],
-        "summary": "List Passengers",
-        "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Passengers"
-        ],
-        "summary": "Create Passenger",
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Passenger"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "/passengers/{id}": {
-      "get": {
-        "tags": [
-          "Passengers"
-        ],
-        "summary": "Get Single Passenger",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Passengers"
-        ],
-        "summary": "Update Passenger",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Passenger"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Passengers"
-        ],
-        "summary": "Delete Passenger",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "Passengers"
-        ],
-        "summary": "Update Passenger",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Passenger"
             }
           }
         ],
@@ -649,29 +592,21 @@
             "schema": {
               "type": "object",
               "properties": {
-                "reservationname": {
+                "userId": {
                   "type": "string",
-                  "example": "test"
+                  "example": "65343222b67e9681f937f001"
                 },
-                "password": {
+                "carId": {
                   "type": "string",
-                  "example": "1234"
+                  "example": "65352f518a9ea121b1ca5001"
                 },
-                "email": {
+                "startDate": {
                   "type": "string",
-                  "example": "test@site.com"
+                  "example": "2023-10-10"
                 },
-                "isActive": {
-                  "type": "boolean",
-                  "example": true
-                },
-                "isStaff": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "isAdmin": {
-                  "type": "boolean",
-                  "example": false
+                "endDate": {
+                  "type": "string",
+                  "example": "2023-10-16"
                 }
               }
             }
@@ -725,29 +660,21 @@
             "schema": {
               "type": "object",
               "properties": {
-                "reservationname": {
+                "userId": {
                   "type": "string",
-                  "example": "test"
+                  "example": "65343222b67e9681f937f001"
                 },
-                "password": {
+                "carId": {
                   "type": "string",
-                  "example": "1234"
+                  "example": "65352f518a9ea121b1ca5001"
                 },
-                "email": {
+                "startDate": {
                   "type": "string",
-                  "example": "test@site.com"
+                  "example": "2023-10-10"
                 },
-                "isActive": {
-                  "type": "boolean",
-                  "example": true
-                },
-                "isStaff": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "isAdmin": {
-                  "type": "boolean",
-                  "example": false
+                "endDate": {
+                  "type": "string",
+                  "example": "2023-10-16"
                 }
               }
             }
@@ -802,29 +729,21 @@
             "schema": {
               "type": "object",
               "properties": {
-                "reservationname": {
+                "userId": {
                   "type": "string",
-                  "example": "test"
+                  "example": "65343222b67e9681f937f001"
                 },
-                "password": {
+                "carId": {
                   "type": "string",
-                  "example": "1234"
+                  "example": "65352f518a9ea121b1ca5001"
                 },
-                "email": {
+                "startDate": {
                   "type": "string",
-                  "example": "test@site.com"
+                  "example": "2023-10-10"
                 },
-                "isActive": {
-                  "type": "boolean",
-                  "example": true
-                },
-                "isStaff": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "isAdmin": {
-                  "type": "boolean",
-                  "example": false
+                "endDate": {
+                  "type": "string",
+                  "example": "2023-10-16"
                 }
               }
             }
@@ -923,6 +842,38 @@
             }
           }
         },
+        "firstName": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "lastName": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
         "isActive": {
           "type": "object",
           "properties": {
@@ -956,286 +907,6 @@
             "default": {
               "type": "boolean",
               "example": false
-            }
-          }
-        }
-      }
-    },
-    "Flight": {
-      "type": "object",
-      "properties": {
-        "flightNumber": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
-            },
-            "unique": {
-              "type": "boolean",
-              "example": true
-            }
-          }
-        },
-        "airline": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
-            }
-          }
-        },
-        "departure": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
-            }
-          }
-        },
-        "departureDate": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
-            }
-          }
-        },
-        "arrival": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
-            }
-          }
-        },
-        "arrivalDate": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
-            }
-          }
-        },
-        "createdId": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "ref": {
-              "type": "string",
-              "example": "User"
-            },
-            "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
-            }
-          }
-        }
-      }
-    },
-    "Reservation": {
-      "type": "object",
-      "properties": {
-        "flightId": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "ref": {
-              "type": "string",
-              "example": "Flight"
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
-            }
-          }
-        },
-        "passengers": {
-          "type": "array",
-          "example": [],
-          "items": {}
-        },
-        "createdId": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "ref": {
-              "type": "string",
-              "example": "User"
-            },
-            "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
-            }
-          }
-        }
-      }
-    },
-    "Passenger": {
-      "type": "object",
-      "properties": {
-        "firstName": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
-            }
-          }
-        },
-        "lastName": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
-            }
-          }
-        },
-        "gender": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "enum": {
-              "type": "array",
-              "example": [
-                "M",
-                "F",
-                null
-              ],
-              "items": {}
-            },
-            "default": {}
-          }
-        },
-        "email": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "required": {
-              "type": "array",
-              "example": [
-                true,
-                "Email field must be required"
-              ],
-              "items": {
-                "type": "string"
-              }
-            },
-            "unique": {
-              "type": "array",
-              "example": [
-                true,
-                "There is this email. Email field must be unique."
-              ],
-              "items": {
-                "type": "string"
-              }
-            },
-            "validate": {
-              "type": "array",
-              "example": [
-                null,
-                "Email type is not correct."
-              ],
-              "items": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "createdId": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "ref": {
-              "type": "string",
-              "example": "User"
-            },
-            "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
             }
           }
         }
