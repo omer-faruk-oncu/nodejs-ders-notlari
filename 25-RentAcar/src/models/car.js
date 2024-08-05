@@ -53,7 +53,7 @@ const CarSchema = new mongoose.Schema({
     },
     
     year: {
-        type: String,
+        type: Number,
         trim: true,
         required: true,
     },
@@ -65,7 +65,7 @@ const CarSchema = new mongoose.Schema({
     },
     
     pricePerDay: {
-        type: String,
+        type: Number,
         trim: true,
         required: true,
     },
