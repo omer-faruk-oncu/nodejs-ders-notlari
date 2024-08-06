@@ -50,7 +50,7 @@ app.use(require("./src/middlewares/queryHandler"));
 // NodeMailer.com
 // npm install nodemailer
 
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
 
 // Create Test Account:
 // nodemailer.createTestAccount().then((data) => console.log(data));
@@ -95,13 +95,13 @@ const nodemailer = require("nodemailer");
 
 // //* GoogleMail (gmail)
 // //* Google -> AccountHome -> Security -> Two-Step-Verify -> App-Passwords
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'farukoncu78@gmail.com',
-        pass: 'krkh fxow gujl cjhf'
-    }
-})
+// const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//         user: 'farukoncu78@gmail.com',
+//         pass: 'krkh fxow gujl cjhf'
+//     }
+// })
 
 //* YandexMail (yandex)
 // const transporter = nodemailer.createTransport({

@@ -4,12 +4,11 @@
 ------------------------------------------------------- */
 
 const User = require("../models/user");
-const sendMail = require('../helpers/sendMail')
-
+const sendMail = require("../helpers/sendMail");
 
 module.exports = {
-    list: async (req, res) => {
-        /*
+  list: async (req, res) => {
+    /*
                 #swagger.tags = ["Users"]
                 #swagger.summary = "List Users"
                 #swagger.description = `
@@ -23,91 +22,90 @@ module.exports = {
                 `
             */
 
-        const data = await res.getModelList(User);
-        res.status(200).send({
-            error: false,
-            details: await res.getModelListDetails(User),
-            data,
-        });
-    },
+    const data = await res.getModelList(User);
+    res.status(200).send({
+      error: false,
+      details: await res.getModelListDetails(User),
+      data,
+    });
+  },
 
-    read: async (req, res) => {
-        /*
+  read: async (req, res) => {
+    /*
                 #swagger.tags = ["Users"]
                 #swagger.summary = "Get Single User"
         */
 
-        const data = await User.findOne({ _id: req.params.id });
+    const data = await User.findOne({ _id: req.params.id });
 
-        res.status(200).send({
-            error: false,
-            data,
-        });
-    },
+    res.status(200).send({
+      error: false,
+      data,
+    });
+  },
 
-    create: async (req, res) => {
-        /*
+  create: async (req, res) => {
+    /*
                 #swagger.tags = ["Users"]
                 #swagger.summary = "Create User"
         */
 
-        if (
-            !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(
-                req?.body?.password,
-            )
-        ) {
-            res.errorStatusCode = 404;
-            throw new Error(
-                "Password must be at least 8 characters long and contain at least one special character and  at least one uppercase character",
-            );
-            //   const customError = new Error("");
-            //   error.statusCode = 404;
-            //   throw customError;
-        }
-        const data = await User.create(req.body);
+    if (
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(
+        req?.body?.password
+      )
+    ) {
+      res.errorStatusCode = 404;
+      throw new Error(
+        "Password must be at least 8 characters long and contain at least one special character and  at least one uppercase character"
+      );
+      //   const customError = new Error("");
+      //   error.statusCode = 404;
+      //   throw customError;
+    }
+    const data = await User.create(req.body);
 
-        sendMail(
-            data.email,
-            'Welcome',
-            `
+    sendMail(
+      data.email,
+      "Welcome",
+      `
                 <h1>Welcome</h1>
                 <h2>${data.username}</h2>
                 <p>Welcome to our system</p>
             `
-        )
+    );
 
-        res.status(201).send({
-            error: false,
-            data,
-        });
-    },
+    res.status(201).send({
+      error: false,
+      data,
+    });
+  },
 
-    update: async (req, res) => {
-        /*
+  update: async (req, res) => {
+    /*
                 #swagger.tags = ["Users"]
                 #swagger.summary = "Update User"
           */
 
-        const data = await User.updateOne({ _id: req.params.id }, req.body, {
-            runValidators: true,
-        });
+    const data = await User.updateOne({ _id: req.params.id }, req.body, {
+      runValidators: true,
+    });
 
-        res.status(202).send({
-            error: false,
-            new: await User.findOne({ _id: req.params.id }),
-        });
-    },
+    res.status(202).send({
+      error: false,
+      new: await User.findOne({ _id: req.params.id }),
+    });
+  },
 
-    delete: async (req, res) => {
-        /*
+  delete: async (req, res) => {
+    /*
                 #swagger.tags = ["Users"]
                 #swagger.summary = "Delete User"
           */
-        const data = await User.deleteOne({ _id: req.params.id });
-        res.status(data.deletedCount ? 204 : 404).send({
-            error: !data.deletedCount,
-            data,
-        });
-    },
+    const data = await User.deleteOne({ _id: req.params.id });
+    res.status(data.deletedCount ? 204 : 404).send({
+      error: !data.deletedCount,
+      data,
+    });
+  },
 };
-
