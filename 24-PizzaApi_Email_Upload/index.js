@@ -147,8 +147,8 @@ app.all("/", (req, res) => {
 });
 
 // StaticFile:
-// app.use('/uploads', express.static('./uploads'))
-app.use("/images", express.static("./uploads"));
+app.use('/uploads', express.static('./uploads'))
+// app.use("/images", express.static("./uploads"));
 
 /* ------------------------------------------------------- */
 
