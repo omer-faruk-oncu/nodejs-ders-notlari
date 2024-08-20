@@ -1,0 +1,17 @@
+FROM node:21-alpine3.18
+
+WORKDIR /backend
+
+COPY . .
+
+RUN mkdir -p logs
+
+RUN mkdir -p uploads
+
+RUN npm install
+
+CMD ["npm", "start"]
+
+EXPOSE 8000 
+
+
