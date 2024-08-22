@@ -22,7 +22,7 @@ require('express-async-errors')
 // Model, controller'da kullanılacağı için orada require edilmelidir.
 // const Todo = require('./app/models/todo.model')
 
-app.use(require('./app/routes/todo.router'))
+app.use('/api', require('./app/routes/todo.router.api'))
 
 /* ------------------------------------------------------- */
 // ErrorHandler:
