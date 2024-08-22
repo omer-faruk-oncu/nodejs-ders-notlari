@@ -18,7 +18,7 @@ require("express-async-errors");
 
 app.set("view engine", "ejs");
 
-// app.set("views", "./public");
+app.set("views", "./public");
 
 app.all('/', (req ,res) => {
 
