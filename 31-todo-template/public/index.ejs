@@ -15,7 +15,8 @@
     <div class="container">
       <h2>FS Todo Template Project</h2>
       <div class="rows">
-        <h1>Todo List</h1>
+        <h2>Todo List</h2>
+        <p><a href="/view/create" class="btn btn-primary">CREATE</a></p> 
         <p>Count: <%=count%></p>
         <table class="table table-striped">
           <thead>
@@ -35,8 +36,8 @@
               <td>#<%=todo.dataValues.id%></td>
               <td><%=todo.dataValues.title%></td>
               <td><%=todo.dataValues.description%></td>
-              <td><%=todo.dataValues.priority%></td>
-              <td><%=(todo.dataValues.isDone)%></td>
+              <td><%=priorities[todo.dataValues.priority]%></td>
+              <td><%- (todo.dataValues.isDone ? '<span class="text-success">YES</span>' : '<span class="text-danger">NO</span>') %></td>
               <td><%=todo.dataValues.createdAt.toLocaleDateString('tr')%></td>
      
           

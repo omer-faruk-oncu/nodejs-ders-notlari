@@ -6,6 +6,13 @@
 // Model:
 const Todo = require('../models/todo.model')
 
+const PRIORITIES = {
+    '-1' : 'Low',
+    '0' : 'Normal',
+    '1' : 'High'
+}
+
+
 module.exports = {
 
     list: async (req, res) => {
@@ -19,24 +26,13 @@ module.exports = {
         // })
 
         //console.log(data)
-        res.render('index', { todos: data.rows, count: data.count} )
+        res.render('index', { todos: data.rows, count: data.count, priorities: PRIORITIES } )
     
     },
 
     // CRUD ->
 
     create: async (req, res) => {
-
-        // const receivedData = req.body
-        // // console.log(receivedData)
-    
-        // const data = await Todo.create({
-        //     title: receivedData.title,
-        //     description: receivedData.description,
-        //     priority: receivedData.priority,
-        //     isDone: receivedData.isDone
-        // })
-        // // console.log(data)
     
         const data = await Todo.create(req.body)
         // console.log(data)
