@@ -20,9 +20,17 @@ app.set("view engine", "ejs");
 
 // app.set("views", "./public");
 
-app.all("/", (req, res) => {
-  res.render("index");
-});
+app.all('/', (req ,res) => {
+
+    // ./views klasörü içindeki dosyayı çağır:
+    // res.render('index.ejs')
+    // res.render('index')
+    res.send(`
+        <p><a href="/view">Todo Template</a></p>    
+        <p><a href="/api">Todo RestAPI</a></p>    
+    `)
+
+})
 
 /* ------------------------------------------------------- */
 // ROUTES:
@@ -30,6 +38,7 @@ app.all("/", (req, res) => {
 // Model, controller'da kullanılacağı için orada require edilmelidir.
 // const Todo = require('./app/models/todo.model')
 
+app.use("/view", require("./app/routes/todo.router.view"));
 app.use("/api", require("./app/routes/todo.router.api"));
 
 /* ------------------------------------------------------- */
