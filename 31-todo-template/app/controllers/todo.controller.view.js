@@ -15,7 +15,9 @@ const PRIORITIES = {
 module.exports = {
   list: async (req, res) => {
     // const data = await Todo.findAll()
-    const data = await Todo.findAndCountAll();
+    const data = await Todo.findAndCountAll({
+      order: [["id", "desc"]],
+    });
 
     // res.status(200).send({
     //     error: false,
@@ -37,7 +39,7 @@ module.exports = {
       const data = await Todo.create(req.body);
       res.redirect("/view");
     } else {
-      res.render("todoCreate");
+      res.render("todoCreate", { priorities: PRIORITIES });
     }
   },
 
@@ -45,23 +47,29 @@ module.exports = {
     // const data = await Todo.findOne({ where: { id: req.params.id } })
     const data = await Todo.findByPk(req.params.id);
 
-    res.status(200).send({
-      error: false,
-      result: data,
-    });
+    // res.status(200).send({
+    //   error: false,
+    //   result: data,
+    // });
+
+    res.render("todoRead", { todo: data.dataValues, priorities: PRIORITIES });
   },
 
   update: async (req, res) => {
     // const data = await Todo.update({ ...newData }, { ...filter })
-    const data = await Todo.update(req.body, { where: { id: req.params.id } });
+
     // console.log(data)
 
-    res.status(202).send({
-      error: false,
-      result: data,
-      message: data[0] >= 1 ? "Updated" : "Can not Updated.",
-      new: await Todo.findByPk(req.params.id), // Güncellenmiş kaydı göster.
-    });
+    if (req.method == "POST") {
+      const data = await Todo.update(req.body, {
+        where: { id: req.params.id },
+      });
+
+      res.redirect("/view");
+    } else {
+        const data = await Todo.findByPk(req.params.id);
+      res.render("todoUpdate", {todo: data.dataValues, priorities: PRIORITIES});
+    }
   },
 
   delete: async (req, res) => {
@@ -84,7 +92,8 @@ module.exports = {
       // })
 
       // Sadece statusCode çıktısı ver:
-      res.sendStatus(204);
+    //   res.sendStatus(204);
+    res.redirect("/view");
     } else {
       // Not Deleted:
       // res.status(404).send({

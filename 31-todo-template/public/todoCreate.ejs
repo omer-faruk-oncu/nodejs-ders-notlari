@@ -21,7 +21,11 @@
             <table class="table table-striped">
                 <tr>
                     <td>Priority:</td>
-                    <td><input type="text" class="form-control" name="priority" /></td>
+                    <td><select class="form-select" name="priority">
+                        <% for (let key in priorities) { %>
+                            <option value="<%= key %>"><%= priorities[key] %></option>
+                        <% } %>
+                    </select></td>
                   
                 </tr>
                 <tr>
