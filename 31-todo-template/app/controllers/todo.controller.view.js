@@ -34,14 +34,16 @@ module.exports = {
 
     create: async (req, res) => {
     
-        const data = await Todo.create(req.body)
-        // console.log(data)
+        // const data = await Todo.create(req.body)
+        // // console.log(data)
     
-        res.status(201).send({
-            error: false,
-            result: data.dataValues
-        })
-    
+        // res.status(201).send({
+        //     error: false,
+        //    result: data.dataValues
+        // })
+
+        res.render('todoCreate')
+     
     },
 
     read: async (req, res) => {

@@ -13,6 +13,7 @@ const todo = require('../controllers/todo.controller.view')
 
 router.get('/', todo.list)
 router.get('/create', todo.create)
+router.post('/create', todo.create)
 
 // router.route('/:id')
 //     .get(todo.read)
