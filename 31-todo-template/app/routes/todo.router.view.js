@@ -15,9 +15,6 @@ router.get('/', todo.list)
 router.get('/create', todo.create)
 router.post('/create', todo.create)
 
-// router.route('/:id')
-//     .get(todo.read)
-//     .put(todo.update)
-//     .delete(todo.delete)
+
 
 module.exports = router
